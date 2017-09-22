@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5000 main:app
+    volumes:
+      - .:/opt/webapp
+    ports:
+      - '5000:5000'
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
